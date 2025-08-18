@@ -87,7 +87,9 @@ const Beer = () => {
           <Link key={beers.id} to={`/beers/${beers.id}`}>
             <div className="cardsBox">
               <div className="imgDiv">
-                <img src={beers.image} alt="beer" />
+                  {beers.image ? (
+                <img src={beers.image} alt={beers.name} />
+                ) : null}
               </div>
               <p className="titles">{beers.name}</p>
             </div>
