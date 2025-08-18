@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.cardsDiv {
+  display: flex;                 /* flex row instead of grid */
+  overflow-x: auto;              /* enable horizontal scroll */
+  overflow-y: hidden;            /* hide vertical overflow */
+  scroll-snap-type: x mandatory; /* snap horizontally */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+
+  gap: 16px;
+  padding: 16px;
+  margin: 0 auto;
+
+  scrollbar-width: none;         /* hide scrollbar Firefox */
+  -ms-overflow-style: none;      /* hide scrollbar IE/Edge */
+}
+.cardsDiv::-webkit-scrollbar {
+  display: none;                 /* hide scrollbar Chrome/Safari */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.cardsBox {
+  flex: 0 0 auto;                /* prevents shrinking */
+  scroll-snap-align: start;      /* snap cards into view */
+  width: 150px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  padding: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+.cardsBox:hover {
+  transform: scale(1.05);        /* slight hover zoom */
+}
+
+.imgDiv {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.imgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* keeps images cropped nicely */
+  border-radius: 8px;
+}
+
+.titles {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
 }
