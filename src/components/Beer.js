@@ -5,12 +5,11 @@ const Beer = () => {
   const [list, setList] = useState([]);
   const url = 'https://api.sampleapis.com/beers/ale';
 
-  /* fetch data */
+  // Fetch data
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((list) => {
-        console.log(list);
         setList(list);
       })
       .catch((err) => {
@@ -19,35 +18,66 @@ const Beer = () => {
   }, []);
 
   useEffect(() => {
-    const gridContainer = document.getElementById('maindiv');
+    const container = document.getElementById('maindiv');
     const scrollbarThumb = document.getElementById('scrollbarMain');
 
-    if (!gridContainer || !scrollbarThumb) return;
+    if (!container || !scrollbarThumb) return;
 
+    // --- Update thumb on container scroll ---
     const handleScroll = () => {
-      const scrollLeft = gridContainer.scrollLeft;
-      const scrollWidth = gridContainer.scrollWidth;
-      const clientWidth = gridContainer.clientWidth;
-      const scrollPercentage =
-        (scrollLeft / (scrollWidth - clientWidth)) * 100;
-
-      if (scrollPercentage >= 75) {
-        scrollbarThumb.style.left = '75%';
-      } else if (scrollPercentage >= 50) {
-        scrollbarThumb.style.left = '50%';
-      } else if (scrollPercentage >= 25) {
-        scrollbarThumb.style.left = '25%';
-      } else {
-        scrollbarThumb.style.left = '0%';
-      }
+      const scrollLeft = container.scrollLeft;
+      const scrollWidth = container.scrollWidth - container.clientWidth;
+      const thumbLeft = (scrollLeft / scrollWidth) * 100;
+      scrollbarThumb.style.left = thumbLeft + '%';
     };
 
-    gridContainer.addEventListener('scroll', handleScroll);
+    container.addEventListener('scroll', handleScroll);
+
+    // --- Drag-to-scroll logic ---
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const onMouseDown = (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      startScrollLeft = container.scrollLeft;
+      document.body.style.userSelect = 'none'; // prevent text selection
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      const dx = e.pageX - startX;
+      const containerWidth = container.scrollWidth - container.clientWidth;
+      const trackWidth =
+        scrollbarThumb.parentElement.clientWidth - scrollbarThumb.clientWidth;
+      // Move scroll proportional to thumb movement
+      container.scrollLeft = startScrollLeft + dx * (containerWidth / trackWidth);
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+      document.body.style.userSelect = 'auto';
+    };
+
+    scrollbarThumb.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    // Touch events
+    scrollbarThumb.addEventListener('touchstart', (e) =>
+      onMouseDown(e.touches[0])
+    );
+    window.addEventListener('touchmove', (e) => onMouseMove(e.touches[0]));
+    window.addEventListener('touchend', onMouseUp);
 
     return () => {
-      gridContainer.removeEventListener('scroll', handleScroll);
+      container.removeEventListener('scroll', handleScroll);
+      scrollbarThumb.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
     };
-  }, [list]); // re-run when beers load
+  }, [list]);
 
   return (
     <div className="beersList">
@@ -65,7 +95,7 @@ const Beer = () => {
         ))}
       </div>
 
-      {/* Scrollbar */}
+      {/* Custom interactive scrollbar */}
       <div className="scrollbarOut">
         <div className="scrollbarIn">
           <div className="scrollbarMain" id="scrollbarMain"></div>
