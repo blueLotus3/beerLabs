@@ -1,6 +1,6 @@
 .cardsDiv {
   display: flex;                 /* flex row instead of grid */
-  overflow-x: auto;              /* enable horizontal scroll */
+  overflow-x: scroll;              /* enable horizontal scroll */
   overflow-y: hidden;            /* hide vertical overflow */
   scroll-snap-type: x mandatory; /* snap horizontally */
   -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
@@ -21,8 +21,8 @@
 .cardsBox {
   flex: 0 0 250px;                /* prevents shrinking */
   height: 320px;
-  background: #f5f5f5;
   border-radius: 12px;
+  background: #f5f5f5;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 
@@ -82,7 +82,7 @@
 
 .scrollbarOut {
   width: 120px;              /* total track width */
-  height: 25px;               /* track height */
+  height: 6px;               /* track height */
   background: #ccc;          /* track color */
   border-radius: 3px;
 
@@ -91,17 +91,17 @@
 }
 
 .scrollbarIn {
-  width: 10%;
+  width: 100%;
   height: 100%;
   position: relative;
   border-radius: 3px;
 }
 
 .scrollbarMain {
-  width: 25px;                /* "thumb" width = visible portion */
-  height: 25px;
+  width: 25%;                /* "thumb" width = visible portion */
+  height: 100%;
   background: #444;          /* thumb color */
-  border-radius: 17px;
+  border-radius: 3px;
   position: absolute;
   left: 0;
   transition: left 0.25s ease;
