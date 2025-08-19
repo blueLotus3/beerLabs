@@ -1,25 +1,24 @@
 .cardsDiv {
-  display: flex;                 /* flex row instead of grid */
-  overflow-x: scroll;              /* enable horizontal scroll */
-  overflow-y: hidden;            /* hide vertical overflow */
-  scroll-snap-type: x mandatory; /* snap horizontally */
-  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-
+  display: flex;                 
+  overflow-x: scroll;              
+  overflow-y: hidden;           
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch;
+  
   gap: 24px;
   padding: 40px 0;
-  justify-content: center;
-  align-items: center;
   perspective: 1200px;
   scroll-behavior: smooth;
-  scrollbar-width: none;         /* hide scrollbar Firefox */
-  -ms-overflow-style: none;      /* hide scrollbar IE/Edge */
+  scrollbar-width: none;         
+  -ms-overflow-style: none;      
 }
+
 .cardsDiv::-webkit-scrollbar {
-  display: none;                 /* hide scrollbar Chrome/Safari */
+  display: none;                 
 }
 
 .cardsBox {
-  flex: 0 0 250px;                /* prevents shrinking */
+  flex: 0 0 250px;                
   height: 320px;
   border-radius: 12px;
   background: #f5f5f5;
@@ -30,11 +29,42 @@
   scroll-snap-align: center;
 }
 
-.cardsBox img {
-  width: 100%;
-  height: 200px;
-  border-radius: 12px 12px 0 0;
-  object-fit: cover;
+.cardsDiv {
+  position: relative;
+}
+
+.imDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.cardsBox {
+  --flow-space: 0.5rem;
+  --hs1: var(--hue),
+  var(--saturation),
+  var(--lightness);
+  flex: 1 1 14rem;
+  padding: 1.5em 2em;
+  gap: 1.25em;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: start;
+  color: #eceff1;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 15px;
+}
+
+.cardsBox:nth-child(1) {
+  --hue: 165;
+  --saturation: 82.26%;
+  --lightness: 51.37%;
+}
+.cardBox:nth-child(2) {
+  --hue: 165;
+  --saturation: 82.26%;
+  --lightness: 61.76%;
 }
 
 .cardsBox .titles {
