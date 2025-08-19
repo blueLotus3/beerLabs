@@ -7,7 +7,7 @@ const IndivBeer = () => {
     const [beer, setBeer] = useState(null);
 
     useEffect(() => {
-    const url = `https://api.sampleapis.com/beers/${id}`;
+    const url = `https://api.sampleapis.com/beers/ale/${id}`;
         
     fetch(url)
     .then((response) => response.json())
@@ -19,14 +19,16 @@ const IndivBeer = () => {
         console.log(err.message)
     });
 }, [id]);
-if (!character) {
+if (!beer) {
     return <div>Loading...</div>
 }
 
     return (
         <div className="IndivDiv">
-            <Link to={'/'}>X</Link>
-            <img src={beer.image} alt="beer product image"></img>
+            <div className="backButton">
+            <Link to={`/`}>X</Link>
+            </div>
+            <img src={beer.image} alt="beer product"></img>
             <p>{beer.name}</p>
         </div>
     )

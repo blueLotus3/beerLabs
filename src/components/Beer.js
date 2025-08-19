@@ -84,7 +84,7 @@ const Beer = () => {
       {/* Scrollable row */}
       <div className="cardsDiv" id="maindiv">
         {list.map((beers) => (
-          <Link key={beers.id} to={`/beers/${beers.id}`}>
+          <Link key={beers.id} to={`/IndivBeer/${beers.id}`}>
             <div className="cardsBox">
               <div className="imgDiv">
                   {beers.image ? (
