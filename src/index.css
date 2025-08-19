@@ -1,10 +1,14 @@
+.beersList {
+  max-width: 75rem;
+  padding: 3em 1.5rem;
+}
+
 .cardsDiv {
   display: flex;                 
   overflow-x: scroll;              
   overflow-y: hidden;           
   scroll-snap-type: x mandatory; 
   -webkit-overflow-scrolling: touch;
-  
   gap: 24px;
   padding: 40px 0;
   perspective: 1200px;
@@ -33,7 +37,7 @@
   position: relative;
 }
 
-.imDiv {
+.cardBox imgDiv {
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
@@ -67,18 +71,6 @@
   --lightness: 61.76%;
 }
 
-.cardsBox .titles {
-  margin-top: 12px;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.cardsBox p {
-  margin-top: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
 .cardsBox:target,
 .cardsBox:active {
   transform: scale(1, 15);
@@ -87,7 +79,7 @@
 }
 
 .cardsBox:hover {
-  transform: scale(1.05);        /* slight hover zoom */
+  transform: scale(1.05);        
 }
 
 .imgDiv {
@@ -97,18 +89,14 @@
   overflow: hidden;
   margin-bottom: 8px;
 }
+
 .imgDiv img {
   width: 100%;
   height: 100%;
-  object-fit: cover;             /* keeps images cropped nicely */
+  object-fit: cover;             
   border-radius: 8px;
 }
 
-.titles {
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-}
 
 .scrollbarOut {
   width: 120px;              /* total track width */
