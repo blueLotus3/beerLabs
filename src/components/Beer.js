@@ -20,18 +20,36 @@ const Beer = () => {
   useEffect(() => {
     const container = document.getElementById('maindiv');
     const scrollbarThumb = document.getElementById('scrollbarMain');
+    const cards = container?.querySelectorAll('.cardsBox');
 
-    if (!container || !scrollbarThumb) return;
+    if (!container || !scrollbarThumb || !cards) return;
 
     // --- Update thumb on container scroll ---
     const handleScroll = () => {
+      const center = container.scrollLeft + container.offsetWidth / 2;
+      
+      cards.forEach((card) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const distance = Math.abs(center - cardCenter);
+
+          const scale = Math.max(0.8, 1 - distance / 800);
+          const rotate = Math.min(25, distance / 10);
+
+          card.style.transform = `
+            scale(${scale})
+            rotateY(${center > cardCenter ? rotate : -rotate} deg)
+          `;
+          card.style.opacity = scale;
+      })
       const scrollLeft = container.scrollLeft;
       const scrollWidth = container.scrollWidth - container.clientWidth;
       const thumbLeft = (scrollLeft / scrollWidth) * 100;
       scrollbarThumb.style.left = thumbLeft + '%';
     };
 
+
     container.addEventListener('scroll', handleScroll);
+    handleScroll();
 
     // --- Drag-to-scroll logic ---
     let isDragging = false;
