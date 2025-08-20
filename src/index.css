@@ -1,9 +1,223 @@
-body {
-  background: #444;
-}
 .beersList {
   max-width: 75rem;
   padding: 3em 1.5rem;
+}
+
+/* header */
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li p {
+  display: block;
+  padding: 6px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li p:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* cart badge */
+.cart-badge {
+  position: absolute;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 5px 8px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* shopping cart page styles */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.col-2 {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+}
+
+/* add button for cart page */
+.add {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.add:hover {
+  background-color:#70e1f5;
+  transition: 0.2s ease-in-out;
+}
+
+.add:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* minus button for cart page */
+.remove {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.remove:hover {
+  background-color:#70e1f5;
+  transition: 0.2s ease-in-out;
+}
+
+.remove:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* remove button for cart page */
+.deletebtn {
+  background: #ff4d4d;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.deletebtn:hover {
+  background-color: black;
+  transition: 0.2s ease-in-out;
+}
+
+.deletebtn:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* Checkout button for cart page */
+.checkout {
+  background: blue;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.checkout:hover {
+  background-color: black;
+  transition: 0.2s ease-in-out;
+}
+
+.checkout:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* add to cart button */
+.AddButtn {
+  border-radius: 20px;
+  padding: 15px 30px;
+  background-color: yellow;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.AddButtn:hover {
+  background-color:#70e1f5;
+  transition: 0.2s ease-in-out;
+}
+
+.AddButtn:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 .heading {

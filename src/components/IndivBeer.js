@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { CartContext } from './Cart.js';
 
 
 const IndivBeer = () => {
     const { id } = useParams();
     const [beer, setBeer] = useState(null);
+
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
     const url = `https://api.sampleapis.com/beers/ale/${id}`;
@@ -35,7 +38,9 @@ if (!beer) {
                      e.target.src = "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg";
                  }} 
                  />
-            <p>{beer.name}</p>
+            <p className="titles">{beer.name}</p>
+            <p className="titles">{beer.price}</p>
+            <button onClick={() => addToCart(beer)} className="AddButtn">Add to Cart</button>
         </div>
     )
 }
