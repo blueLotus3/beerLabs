@@ -28,7 +28,13 @@ if (!beer) {
             <div className="backButton">
             <Link to={`/`}>X</Link>
             </div>
-            <img src={beer.image} alt="beer product"></img>
+            <img src={beer.image || "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg" }
+                 alt={beer.name}
+                 onError={(e) => {
+                     e.target.onError = null;
+                     e.target.src = "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg";
+                 }} 
+                 />
             <p>{beer.name}</p>
         </div>
     )

@@ -88,10 +88,17 @@ const Beer = () => {
             <div className="cardsBox">
               <div className="imgDiv">
                   {beers.image ? (
-                <img src={beers.image} alt={beers.name} />
+                <img src={beers.image || "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg" }
+                 alt={beers.name}
+                 onError={(e) => {
+                     e.target.onError = null;
+                     e.target.src = "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg";
+                 }} 
+                 />
                 ): null }
               </div>
               <p className="titles">{beers.name}</p>
+                <p className="titles">{beers.price}</p>
             </div>
           </Link>
         ))}
