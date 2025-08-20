@@ -9,8 +9,12 @@ const CartPage = () => {
 
 
   /* Variables for calculating shipping cost */
-  const itemsPrice = cartItems.reduce((a, c) => a + c.gearPrice * (c.quantity || 1),0);
-  const taxPrice = itemsPrice * 0.14;
+  const itemsPrice = cartItems.reduce(
+    (a, c) => a + (parseFloat(c.price.replace(/[^0-9.]/g, '')) || 0) * (c.quantity || 0),
+    0
+  );
+  const safeitemsPrice = isNaN(itemsPrice) ? 0 : itemsPrice;
+  const taxPrice = safeitemsPrice * 0.14;
   const roundedTax = Math.round(taxPrice * 100) / 100;
   const totalPrice = itemsPrice + taxPrice;
   const roundedTotal = Math.round(totalPrice * 100) / 100;
@@ -38,7 +42,7 @@ const CartPage = () => {
             <button onClick={() => removeFromCart(item.id)} className="deletebtn">Remove</button>
             </div>
             <div className="col-2 text-right">
-                {item.quantity} x ${item.gearPrice}
+                {item.quantity} x {item.price}
             </div>
         </div>
     ))}

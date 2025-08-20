@@ -11,6 +11,7 @@ const Beer = () => {
       .then((response) => response.json())
       .then((list) => {
         setList(list);
+        console.log(list)
       })
       .catch((err) => {
         console.log(err.message);
