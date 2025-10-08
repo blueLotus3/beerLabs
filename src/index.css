@@ -1,9 +1,9 @@
-.beersList {
-  max-width: 75rem;
-  padding: 3em 1.5rem;
-}
+
 
 /* header */
+.heading p {
+  color: #333;
+}
 .header ul {
   margin: 0;
   padding: 0;
@@ -24,7 +24,6 @@
 }
 
 /* menu */
-
 .header .menu {
   clear: both;
   max-height: 0;
@@ -272,8 +271,8 @@
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   align-items: start;
-  color: #eceff1;
-  background-color: transparent;
+  color: #333;
+  /* background-color: transparent; */
   border: 1px solid #fff;
   border-radius: 15px;
 }
@@ -314,7 +313,6 @@
   object-fit: cover;             
   border-radius: 8px;
 }
-
 
 .scrollbarOut {
   width: 120px;             
