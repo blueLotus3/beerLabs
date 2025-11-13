@@ -82,7 +82,6 @@ const Beer = () => {
 
   return (
     <div className="beersList">
-        <div className="heading"> <p>Please Make a Selection</p></div>
       <div className="cardsDiv" id="maindiv">
         {list.map((beers) => (
           <Link key={beers.id} to={`/IndivBeer/${beers.id}`}>

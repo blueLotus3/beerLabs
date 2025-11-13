@@ -1,9 +1,10 @@
 
-
+/* nav menu */
 /* header */
 .heading p {
   color: #333;
 }
+
 .header ul {
   margin: 0;
   padding: 0;
@@ -23,29 +24,14 @@
   background-color: #f4f4f4;
 }
 
-/* menu */
+/* menu container */
 .header .menu {
   clear: both;
   max-height: 0;
-  transition: max-height .2s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 
-/* cart badge */
-.cart-badge {
-  position: absolute;
-  right: -5px;
-  background-color: red;
-  color: white;
-  font-size: 12px;
-  border-radius: 50%;
-  padding: 5px 8px;
-  min-width: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* menu icon */
-
+/* hamburger icon */
 .header .menu-icon {
   cursor: pointer;
   float: right;
@@ -59,7 +45,7 @@
   display: block;
   height: 2px;
   position: relative;
-  transition: background .2s ease-out;
+  transition: background 0.2s ease-out;
   width: 18px;
 }
 
@@ -70,7 +56,7 @@
   display: block;
   height: 100%;
   position: absolute;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   width: 100%;
 }
 
@@ -82,8 +68,7 @@
   top: -5px;
 }
 
-/* menu btn */
-
+/* menu toggle behavior */
 .header .menu-btn {
   display: none;
 }
@@ -109,221 +94,120 @@
   top: 0;
 }
 
-/* shopping cart page styles */
-.row {
+.beersList {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #f9f9f9 0%, #eceff1 100%);
+  overflow: hidden;
 }
 
-.col-2 {
-  font-size: 16px;
-  margin: 0;
-  color: #333;
-}
-
-/* add button for cart page */
-.add {
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
-}
-
-.add:hover {
-  background-color:#70e1f5;
-  transition: 0.2s ease-in-out;
-}
-
-.add:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-/* minus button for cart page */
-.remove {
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
-}
-
-.remove:hover {
-  background-color:#70e1f5;
-  transition: 0.2s ease-in-out;
-}
-
-.remove:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-/* remove button for cart page */
-.deletebtn {
-  background: #ff4d4d;
-  color: #fff;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
-}
-
-.deletebtn:hover {
-  background-color: black;
-  transition: 0.2s ease-in-out;
-}
-
-.deletebtn:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-/* Checkout button for cart page */
-.checkout {
-  background: blue;
-  color: #fff;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
-}
-
-.checkout:hover {
-  background-color: black;
-  transition: 0.2s ease-in-out;
-}
-
-.checkout:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-/* add to cart button */
-.AddButtn {
-  border-radius: 20px;
-  padding: 15px 30px;
-  background-color: yellow;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-}
-
-.AddButtn:hover {
-  background-color:#70e1f5;
-  transition: 0.2s ease-in-out;
-}
-
-.AddButtn:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
+/* Heading */
 .heading {
   font-weight: 600;
   font-size: 2.25em;
   text-align: center;
-  color: #eceff1;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
+/* Cards Container */
 .cardsDiv {
-  display: flex;                 
-  overflow-x: auto;              
-  overflow-y: hidden;           
-  scroll-snap-type: x mandatory; 
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  gap: 24px;
-  padding: 40px 0;
-  perspective: 1200px;
   scroll-behavior: smooth;
-  scrollbar-width: none;         
-  -ms-overflow-style: none;      
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  width: 90%;
+  cursor: grab;
+  perspective: 1200px;
 }
 
 .cardsDiv::-webkit-scrollbar {
-  display: none;                 
+  display: none;
 }
 
+/* Individual Beer Card */
 .cardsBox {
-  display: flex;
-  flex-wrap: wrap;
   flex: 0 0 auto;
-  width: 200px;                
-  height: 320px;
-  margin: 0 20px;
-  border-radius: 12px;
+  width: 220px;
+  height: 330px;
+  border-radius: 16px;
   background: #f5f5f5;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   scroll-snap-align: center;
-}
-
-.cardsBox {
-  --flow-space: 0.5rem;
-  --hs1: var(--hue),
-  var(--saturation),
-  var(--lightness);
-  flex: 1 1 14rem;
-  padding: 1.5em 2em;
-  gap: 1.25em;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  align-items: start;
-  color: #333;
-  /* background-color: transparent; */
-  border: 1px solid #fff;
-  border-radius: 15px;
-}
-
-.cardsBox:nth-child(1) {
-  --hue: 165;
-  --saturation: 82.26%;
-  --lightness: 51.37%;
-}
-.cardBox:nth-child(2) {
-  --hue: 165;
-  --saturation: 82.26%;
-  --lightness: 61.76%;
-}
-
-.cardsBox:target,
-.cardsBox:active {
-  transform: scale(1, 15);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
 }
 
 .cardsBox:hover {
-  transform: scale(1.05);        
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* Add this for center-focus smooth scaling */
+.cardsBox.active {
+  transform: scale(1.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+/* Image Container */
 .cardsBox .imgDiv {
   width: 100%;
-  height: 150px;
-  border-radius: 8px;
+  height: 160px;
+  border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imgDiv img {
   width: 100%;
   height: 100%;
-  object-fit: cover;             
-  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.cardsBox:hover .imgDiv img {
+  transform: scale(1.05);
+}
+
+/* Text */
+.titles {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin: 4px 0;
+  padding: 0 0.5rem;
+}
+
+/* Custom Scrollbar Track */
 .scrollbarOut {
-  width: 120px;             
-  height: 6px;              
-  background: #ccc;          
+  width: 200px;
+  height: 6px;
+  background: #ddd;
   border-radius: 3px;
-
-  margin: 12px auto 0;       
-  position: relative;        
+  margin: 16px auto 0;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Scrollbar Inner */
 .scrollbarIn {
   width: 100%;
   height: 100%;
@@ -331,16 +215,35 @@
   border-radius: 3px;
 }
 
+/* Scrollbar Thumb */
 .scrollbarMain {
-  width: 25%;                
-  height: 100%;
-  background: #444;         
-  border-radius: 3px;
   position: absolute;
+  top: 0;
   left: 0;
-  transition: left 0.25s ease;
+  height: 100%;
+  width: 20%;
+  background: #444;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: left 0.25s ease, background 0.3s ease;
 }
 
-.IndivDiv {
-  text-align: center;
+.scrollbarMain:hover {
+  background: #666;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .cardsBox {
+    width: 160px;
+    height: 250px;
+  }
+
+  .titles {
+    font-size: 0.9rem;
+  }
+
+  .scrollbarOut {
+    width: 150px;
+  }
 }
