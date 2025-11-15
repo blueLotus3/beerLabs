@@ -31,6 +31,7 @@ if (!beer) {
             <div className="backButton">
             <Link to={`/`}>X</Link>
             </div>
+            <div className="imgDiv">
             <img src={beer.image || "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg" }
                  alt={beer.name}
                  onError={(e) => {
@@ -38,6 +39,7 @@ if (!beer) {
                      e.target.src = "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg";
                  }} 
                  />
+                 </div>
             <p className="titles">{beer.name}</p>
             <p className="titles">{beer.price}</p>
             <button onClick={() => addToCart(beer)} className="AddButtn">Add to Cart</button>
