@@ -1,7 +1,6 @@
-import React, {useState, useEffect, useContext} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect, useContext} from 'react'
+import { useParams } from 'react-router-dom'
 import { CartContext } from './Cart.js';
-
 
 const IndivBeer = () => {
     const { id } = useParams();
@@ -29,7 +28,12 @@ if (!beer) {
     return (
         <div className="IndivDiv">
             <div className="backButton">
-            <Link to={`/`}>X</Link>
+            <button
+            onClick={() => {
+                window.history.back();
+            }}
+            >
+                X</button>
             </div>
             <div className="imgDiv">
             <img src={beer.image || "https://res.cloudinary.com/ds7w3ysag/image/upload/v1755718610/bottle_prjaf2.jpg" }

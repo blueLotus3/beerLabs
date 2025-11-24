@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Scroll from './Scroll.js'
 
 const Beer = () => {
   const [list, setList] = useState([]);
@@ -80,6 +81,8 @@ const Beer = () => {
     };
   }, [list]);
 
+
+  Scroll("beer-scroll-position", "maindiv", "scrollbarMain", [list]);
   return (
     <div className="beersList">
       <div className="cardsDiv" id="maindiv">

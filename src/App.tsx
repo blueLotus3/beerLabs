@@ -8,7 +8,6 @@ import CartPage from './pages/CartPage.js'
 import './App.css';
 
 function App() {
-
   return (
     <div className="App">
       <CartProvider>

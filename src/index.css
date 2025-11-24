@@ -41,6 +41,19 @@
   transition: max-height 0.2s ease-out;
 }
 
+.cart-badge {
+  position: absolute;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 5px 8px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
 /* hamburger icon */
 .header .menu-icon {
   cursor: pointer;
