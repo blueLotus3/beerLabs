@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
 import Scroll from './Scroll.js'
+import { CartContext } from './Cart.js';
 
 const Beer = () => {
   const [list, setList] = useState([]);
   const url = 'https://api.sampleapis.com/beers/ale';
+
+  const { addToCart } = useContext(CartContext);
 
   // Fetch data
   useEffect(() => {
@@ -87,7 +89,6 @@ const Beer = () => {
     <div className="beersList">
       <div className="cardsDiv" id="maindiv">
         {list.map((beers) => (
-          <Link key={beers.id} to={`/IndivBeer/${beers.id}`}>
             <div className="cardsBox">
               <div className="imgDiv">
                   {beers.image ? (
@@ -102,8 +103,8 @@ const Beer = () => {
               </div>
               <p className="titles">{beers.name}</p>
                 <p className="titles">{beers.price}</p>
+                <button onClick={() => addToCart(beers)} className="AddButtn">Add to Cart</button>
             </div>
-          </Link>
         ))}
       </div>
 
