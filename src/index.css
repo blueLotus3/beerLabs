@@ -226,9 +226,6 @@
   image-rendering: crisp-edges;
 }
 
-.cardsBox:hover .imgDiv img {
-  transform: scale(1.05);
-}
 
 /* Text */
 .titles {
@@ -283,6 +280,24 @@
   cursor: pointer;
   font-weight: 600;
   
+}
+
+.AddButtn.added {
+ background: green;
+ color: transparent;
+}
+
+.AddButtn.added::after {
+  content: "Added!";
+  opacity: 0;
+  padding-right: 65px;
+  padding-left: -60px;
+  animation: fadeIn 0.4s forwards;
+  color: white;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 .AddButtn:hover {

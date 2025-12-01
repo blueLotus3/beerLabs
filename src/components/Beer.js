@@ -4,9 +4,11 @@ import { CartContext } from './Cart.js';
 
 const Beer = () => {
   const [list, setList] = useState([]);
+  const [addedId, setAddedId] = useState(null);
   const url = 'https://api.sampleapis.com/beers/ale';
 
   const { addToCart } = useContext(CartContext);
+
 
   // Fetch data
   useEffect(() => {
@@ -103,7 +105,19 @@ const Beer = () => {
               </div>
               <p className="titles">{beers.name}</p>
                 <p className="titles">{beers.price}</p>
-                <button onClick={() => addToCart(beers)} className="AddButtn">Add to Cart</button>
+                <button
+                className={`AddButtn ${addedId === beers.id ? "added" : ""}`}
+                onClick={() => {
+                    addToCart(beers);
+
+                    setAddedId(beers.id);
+
+                    setTimeout(() => {
+                        setAddedId(null);
+                    }, 1200);
+                }}
+                
+                >Add to Cart</button>
             </div>
         ))}
       </div>
